@@ -11,6 +11,8 @@ pip install llama-index
 
 pip install openai
 
+Authorization: Bearer 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
+
 from llama_index import SimpleDirectoryReader
 
 from llama_index import GPTVectorStoreIndex
@@ -24,7 +26,8 @@ pip install docx2txt
 documents = SimpleDirectoryReader('sample_data').load_data()
 
 import openai
-openai.api_key = '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'
+import os
+openai.api_key = os.environ.get('OPENAI_API_KEY')
 
 index = GPTVectorStoreIndex.from_documents(documents)
 
